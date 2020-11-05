@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CatalogosController;
 use App\Http\Controllers\CombustibleController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,12 @@ Route::prefix('combustible')->group(function () {
     Route::get('edit/{model}', [CombustibleController::class, 'show'])->name('combustible.edit');
     Route::patch('{model}', [CombustibleController::class, 'update'])->name('combustible.update');
 });
+
+Route::prefix('catalogos')->group(function () {
+    Route::get('combustible', [CatalogosController::class, 'getCombustibles']);
+    
+});
+
 
 
 

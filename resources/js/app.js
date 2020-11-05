@@ -20,9 +20,16 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 import vSelect from 'vue-select'
+import axios from 'axios'
+
+import SelectCombustibles from './components/SelectCombustibles.vue'
 
 Vue.component('v-select', vSelect)
+Vue.component('axios', axios)
+//Vue.component('select-combustible',SelectCombustible);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('select-combustibles', SelectCombustibles);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
