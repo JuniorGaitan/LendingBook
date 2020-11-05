@@ -9,20 +9,25 @@ use Collective\Html\Eloquent\FormAccessible;
 class CombustibleController extends Controller
 {
 
-    public function index(Request $request){
-        $rows=Combustible::query()
-            ->orderBy('id','desc')
+    public function index(Request $request)
+    {
+        $rows = Combustible::query()
+            ->orderBy('id', 'desc')
             ->get();
 
-        return view('catalogos.combustible.index',compact('rows'));
+        $model = Combustible::find(2);
+
+        return view('catalogos.combustible.index', compact('rows', 'model'));
     }
 
-    public function add(){
+    public function add()
+    {
         return view('catalogos.combustible.add');
     }
 
-    public function show(Combustible $model){
-        return view('catalogos.combustible.edit',compact('model'));
+    public function show(Combustible $model)
+    {
+        return view('catalogos.combustible.edit', compact('model'));
     }
 
 
@@ -30,6 +35,8 @@ class CombustibleController extends Controller
 
     public function store(Request $request)
     {
+
+        dd($request->all());
 
         $model = new Combustible;
 
@@ -40,7 +47,7 @@ class CombustibleController extends Controller
         return redirect()->route('combustible');
     }
 
-    public function update(Combustible $model,Request $request)
+    public function update(Combustible $model, Request $request)
     {
         $model->combustible = $request->combustible;
 
