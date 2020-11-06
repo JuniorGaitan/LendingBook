@@ -3,6 +3,7 @@
 use App\Http\Controllers\CatalogosController;
 use App\Http\Controllers\CombustibleController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ColorController;
 
 
 /*
@@ -35,9 +36,13 @@ Route::prefix('combustible')->group(function () {
 
 Route::prefix('catalogos')->group(function () {
     Route::get('combustible', [CatalogosController::class, 'getCombustibles']);
-    
 });
 
-
-
-
+Route::prefix('colores')->group(function () {
+    Route::get('', [ColorController::class, 'index'])->name('color');
+    Route::get('add', [ColorController::class, 'add'])->name('color.add');
+    Route::get('edit/{model}', [ColorController::class, 'edit'])->name('color.edit');
+    Route::post('', [ColorController::class, 'store'])->name('color.store');
+    Route::patch('{model}', [ColorController::class, 'update'])->name('color.update');
+    Route::delete('{model}', [ColorController::class, 'destroy'])->name('color.delete');
+});
