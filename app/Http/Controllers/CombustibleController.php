@@ -15,9 +15,7 @@ class CombustibleController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        $model = Combustible::find(2);
-
-        return view('catalogos.combustible.index', compact('rows', 'model'));
+        return view('catalogos.combustible.index', compact('rows'));
     }
 
     public function add()
@@ -30,14 +28,8 @@ class CombustibleController extends Controller
         return view('catalogos.combustible.edit', compact('model'));
     }
 
-
-
-
     public function store(Request $request)
     {
-
-        dd($request->all());
-
         $model = new Combustible;
 
         $model->combustible = $request->combustible;
