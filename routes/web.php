@@ -5,6 +5,8 @@ use App\Http\Controllers\CombustibleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\ApiAppsController;
+use Illuminate\Http\Request;
+use App\Http\Controllers\PersonasController;
 
 
 /*
@@ -22,11 +24,31 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('auth');
 
+Route::get('/listas', function () {
+    return view('listas');
+})->middleware('auth');
+
+Route::post('/listas', function (Request $request) {
+    return response()->json($request->all());
+})->name('listas')->middleware('auth');
+
 Auth::routes(['register'=>false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function(){
+
+    Route::prefix('app')->group(function(){
+        Route::prefix('personas')->group(function(){
+            Route::get('', [PersonasController::class, 'index'])->name('persona');
+            Route::get('add', [PersonasController::class, 'add'])->name('persona.add');
+            Route::get('edit/{model}', [PersonasController::class, 'add'])->name('persona.edit');
+            Route::post('', [PersonasController::class, 'store'])->name('persona.store');
+            Route::patch('{model}', [PersonasController::class, 'update'])->name('persona.update');
+            Route::delete('{model}', [PersonasController::class, 'destroy'])->name('persona.delete');
+        });
+    });
+
     Route::prefix('catalogos')->group(function(){
         Route::prefix('colores')->group(function () {
             Route::get('', [ColorController::class, 'index'])->name('color');
@@ -60,5 +82,8 @@ Route::middleware('auth')->group(function(){
     Route::prefix('api-app')->group(function(){
         Route::get('colores', [ApiAppsController::class, 'colores']);
         Route::get('sexos', [ApiAppsController::class, 'sexos']);
+        Route::get('cooperativas', [ApiAppsController::class, 'cooperativas']);
+        Route::get('barrios', [ApiAppsController::class, 'barrios']);
+        Route::get('etnias', [ApiAppsController::class, 'etnias']);
     });
 });

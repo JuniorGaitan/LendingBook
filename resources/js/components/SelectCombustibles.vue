@@ -77,12 +77,12 @@ export default {
         this.valor = "";
       }
     },
-    getData() {
+    getData(val) {
       this.cargar = true;
       axios
         .get(this.url, {
           params: {
-            buscar: 12345,
+            buscar: val,
           },
         })
         .then((resp) => {
