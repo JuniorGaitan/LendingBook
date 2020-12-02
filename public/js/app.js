@@ -2023,13 +2023,13 @@ __webpack_require__.r(__webpack_exports__);
         this.valor = "";
       }
     },
-    getData: function getData() {
+    getData: function getData(val) {
       var _this = this;
 
       this.cargar = true;
       axios.get(this.url, {
         params: {
-          buscar: 12345
+          buscar: val
         }
       }).then(function (resp) {
         _this.cargar = false;
@@ -50160,8 +50160,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/itihell/Site/transporte/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/itihell/Site/transporte/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/itihellmejia/Sites/transporte/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/itihellmejia/Sites/transporte/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
