@@ -23,7 +23,6 @@ class Persona extends Model
         "direccion",
         "telefono",
         "celular",
-        "fecha_nacimiento",
-        "cooperativa_id",
+        "fecha_nacimiento",       
         ];
 }

@@ -19,13 +19,11 @@ class CreatePersonasTable extends Migration
             $table->string('apellidos',60);
             $table->string('identidad',60);
             $table->foreignId('sexo_id')->constrained('sexos');
-            $table->foreignId('etnia_id')->constrained('etnias');
             $table->foreignId('barrio_id')->constrained('barrios');
             $table->string('direccion');
             $table->string('telefono')->nullable();
             $table->string('celular')->nullable();
-            $table->date('fecha_nacimiento');
-            $table->foreignId('cooperativa_id')->nullable()->constrained('cooperativas');
+            $table->date('fecha_nacimiento');           
             $table->timestamps();
         });
     }

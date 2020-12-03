@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pais extends Model
+class estados extends Model
 {
     use HasFactory;
-
     //Definiendo la tabla del modelo
-    protected $table = 'paises';
+     protected $table = 'estados';
 
-    //Definiendo los campos de la tabla
-    protected $fillable = ['pais'];
+     //Definiendo los campos de la tabla
+     protected $fillable = ['estado'];
 }
