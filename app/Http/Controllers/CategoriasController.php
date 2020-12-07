@@ -80,7 +80,7 @@ class CategoriasController extends Controller
      * @param  \App\Models\Categorias  $categorias
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categorias $categorias)
+    public function edit(Categorias $model)
     {
         return view('catalogos.categorias.edit',compact('model'));
   
@@ -100,6 +100,7 @@ class CategoriasController extends Controller
         $categoria->fill($campos);
         $categoria->save();
         return redirect()->route('categoria');
+        
         //
     }
 
@@ -109,9 +110,9 @@ class CategoriasController extends Controller
      * @param  \App\Models\Categorias  $categorias
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categorias $categorias)
+    public function destroy(Categorias $categoria)
     {
-        $model->delete();
+        $categoria->delete();
         return redirect()->route('categoria');
         //
     }
