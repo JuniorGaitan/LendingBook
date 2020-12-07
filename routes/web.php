@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\ApiAppsController;
 use Illuminate\Http\Request;
-use App\Http\Controllers\PersonasController;
+use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\PrestamoController;
 use App\Http\Controllers\LibroController;
 
 
@@ -41,7 +42,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware('auth')->group(function(){
 
     Route::prefix('')->group(function(){
-        Route::prefix('catalogo')->group(function () {
+        Route::prefix('categoria')->group(function () {
             Route::get('', [CategoriasController::class, 'index'])->name('categoria');
             Route::get('add', [CategoriasController::class, 'add'])->name('categoria.add');
             Route::post('', [CategoriasController::class, 'store'])->name('categoria.store');
@@ -49,6 +50,7 @@ Route::middleware('auth')->group(function(){
             Route::get('edit/{model}', [CategoriasController::class,'show'])->name('categoria.edit');
             Route::patch('{model}', [CategoriasController::class, 'update'])->name('categoria.update');
         });
+        
         Route::prefix('libro')->group(function () {
             Route::get('', [LibroController::class, 'index'])->name('libro');
             Route::get('add', [LibroController::class, 'add'])->name('libro.add');
@@ -57,6 +59,15 @@ Route::middleware('auth')->group(function(){
             Route::get('edit/{model}', [LibroController::class, 'show'])->name('libro.edit');
             Route::patch('{model}', [LibroController::class, 'update'])->name('libro.update');
         });
+        Route::prefix('prestamo')->group(function () {
+            Route::get('', [PrestamoController::class, 'index'])->name('prestamo');
+            Route::get('add', [PrestamoController::class, 'add'])->name('prestamo.add');
+            Route::post('', [PrestamoController::class, 'store'])->name('prestamo.store');
+            Route::delete('{model}', [PrestamoController::class, 'destroy'])->name('prestamo.delete');
+            Route::get('edit/{model}', [PrestamoController::class, 'show'])->name('prestamo.edit');
+            Route::patch('{model}', [PrestamoController::class, 'update'])->name('prestamo.update');    
+        });
+ 
         
    
         
