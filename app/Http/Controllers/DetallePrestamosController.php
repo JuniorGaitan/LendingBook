@@ -13,8 +13,20 @@ class DetallePrestamosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {
-        //
+
+    // //Definiendo la tabla del modelo
+    // protected $table = 'prestamos';
+
+    // //Definiendo los campos de la tabla
+    // protected $fillable = [
+    // 'responsable_libro_id',
+    // 'fecha_salida',
+    // 'fecha_entrega',
+    // 'estado_id',
+    // 'observaciones'];
+    //     //
     }
 
     /**

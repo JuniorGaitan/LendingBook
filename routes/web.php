@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function(){
             Route::delete('{model}', [LibroController::class, 'destroy'])->name('libro.delete');
             Route::get('edit/{model}', [LibroController::class, 'show'])->name('libro.edit');
             Route::patch('{model}', [LibroController::class, 'update'])->name('libro.update');
+
         });
         Route::prefix('prestamo')->group(function () {
             Route::get('', [PrestamoController::class, 'index'])->name('prestamo');
@@ -74,6 +75,16 @@ Route::middleware('auth')->group(function(){
         Route::prefix('catalogos')->group(function () {
             Route::get('combustible', [CatalogosController::class, 'getCombustibles']);
         });
+    });
+});
+
+
+Route::middleware('auth')->group(function(){
+    Route::prefix('api-app')->group(function(){
+        Route::get('libros', [ApiAppsController::class, 'libros']);
+        Route::get('sexos', [ApiAppsController::class, 'sexos']);
+        Route::get('categorias', [ApiAppsController::class, 'categorias']);
+        Route::get('personas', [ApiAppsController::class, 'personas']);
     });
 });
 

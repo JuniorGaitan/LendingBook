@@ -49,15 +49,11 @@ class CategoriasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+   
     public function store(Request $request)
     {
-       
-        $model = new Categorias;
-
-        $model->categoria = $request->Nombre;
-
-        $model->save();
-
+        $campos=$this->validate($request,$this->rules);
+        $model=Categorias::query()->create($campos);
         return redirect()->route('categoria');
         //
     }
@@ -80,12 +76,11 @@ class CategoriasController extends Controller
      * @param  \App\Models\Categorias  $categorias
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categorias $model)
-    {
+    public function edit(Categorias $model){
+
         return view('catalogos.categorias.edit',compact('model'));
-  
-        //
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -94,11 +89,12 @@ class CategoriasController extends Controller
      * @param  \App\Models\Categorias  $categorias
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categorias $categoria)
-    { 
+
+    
+    public function update(Categorias $model,Request $request){
         $campos=$this->validate($request,$this->rules);
-        $categoria->fill($campos);
-        $categoria->save();
+        $model->fill($campos);
+        $model->save();
         return redirect()->route('categoria');
         
         //
@@ -110,9 +106,11 @@ class CategoriasController extends Controller
      * @param  \App\Models\Categorias  $categorias
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categorias $categoria)
+
+    
+    public function destroy(Categorias $model)
     {
-        $categoria->delete();
+        $model->delete();
         return redirect()->route('categoria');
         //
     }

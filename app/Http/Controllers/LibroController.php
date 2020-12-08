@@ -8,6 +8,12 @@ use Collective\Html\Eloquent\FormAccessible;
 
 class LibroController extends Controller
 {
+    public $rules = [
+        "libro" => ['required', 'string'],
+        "editorial" => ['required', 'string'],
+        "author" => ['required', 'string'],
+        "cantidad" => ['required', 'numeric'],
+    ];
 
     public function index(Request $request)
     {
@@ -23,26 +29,23 @@ class LibroController extends Controller
         return view('catalogos.libros.add');
     }
 
-    public function show(Libro $libros)
+    
+    public function show(Libro $model)
     {
-        return view('catalogos.libros.edit', compact('model'));
+        return view('catalogos.libros.edit',compact('model'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Libro $model)
     {
-        $model = new Libro;
-
-        $model->combustible = $request->combustible;
-
-        $model->save();
-
+        //$campos=$this->validate($request,$this->rules);
+        $model=Libro::query()->create($request->all());
         return redirect()->route('libro');
     }
 
-    public function update(Request $request, Libro $libros)
+    public function update(Libro $model,Request $request)
     {
-        $model->combustible = $request->combustible;
-
+        //$campos=$this->validate($request,$this->rules);
+        $model->fill($request->all());
         $model->save();
 
         return redirect()->route('libro');

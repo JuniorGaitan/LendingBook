@@ -27,7 +27,7 @@
 
                             <div class="btn-group">
                                 <a href="{!! route('categoria.edit',$row->id) !!}" class="btn btn-link">
-                                    <i class="fas fa-edit    "></i>
+                                    <i class="fas fa-edit "></i>
                                 </a>
     
                                 {!! Form::open(['route' => ['categoria.delete',$row->id],'method'=>'delete']) !!}
