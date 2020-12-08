@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Libros;
+use App\Models\Prestamo;
 use Illuminate\Http\Request;
 
-class LibrosController extends Controller
+class PrestamoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,12 @@ class LibrosController extends Controller
      */
     public function index()
     {
-        //
+        
+            $rows = Prestamo::query()
+                ->orderBy('id', 'desc')
+                ->get();
+    
+            return view('catalogos.prestamos.index', compact('rows'));
     }
 
     /**
@@ -22,9 +27,9 @@ class LibrosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function add()
+    {        //
+        return view('catalogos.prestamos.add');
     }
 
     /**
@@ -38,13 +43,7 @@ class LibrosController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Libros  $libros
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Libros $libros)
+    public function show(Prestamo $libros)
     {
         //
     }
@@ -55,7 +54,7 @@ class LibrosController extends Controller
      * @param  \App\Models\Libros  $libros
      * @return \Illuminate\Http\Response
      */
-    public function edit(Libros $libros)
+    public function edit(Prestamo $libros)
     {
         //
     }
@@ -67,7 +66,7 @@ class LibrosController extends Controller
      * @param  \App\Models\Libros  $libros
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Libros $libros)
+    public function update(Request $request, Prestamo $libros)
     {
         //
     }
@@ -78,7 +77,7 @@ class LibrosController extends Controller
      * @param  \App\Models\Libros  $libros
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Libros $libros)
+    public function destroy(Prestamo $libros)
     {
         //
     }

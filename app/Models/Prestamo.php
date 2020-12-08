@@ -17,7 +17,16 @@ class Prestamo extends Model
     'responsable_libro_id',
     'fecha_salida',
     'fecha_entrega',
-    'estado_id',
-    'observaciones'];
+];
+
+public function persona()
+{
+    return $this->hasOne(
+        Persona::class,
+        'id',
+        'responsable_libro_id'
+    );
+}
+
     
 }

@@ -13,6 +13,22 @@ class Libro extends Model
     protected $table = 'libros';
 
     //Definiendo los campos de la tabla
-    protected $fillable = ['nombre','editorial','author','categoria_id','cantidad'];
+    protected $fillable = [
+        'libro',
+        'editorial',
+        'autor',
+        'categoria_id',
+        'cantidad',
+    ];
+
+        public function categoria()
+        {
+            return $this->hasOne(
+                Categorias::class,
+                'id',
+                'categoria_id'
+            );
+        }
+    
     
 }

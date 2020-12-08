@@ -22,10 +22,10 @@
                     @foreach ($rows as $row)
                     <tr role="row">
                         <td>{{ $row->id }}</td>
-                        <td>{{ $row->nombre }}</td>
+                        <td>{{ $row->libro }}</td>
                         <td>{{ $row->autor }}</td>
                         <td>{{ $row->editorial }}</td>
-                        <td>{{ $row->categoria_id }}</td>
+                        <td>{{ $row->categoria->categoria }}</td>
                         <td>{{ $row->cantidad }}</td>
 
 
@@ -34,7 +34,7 @@
 
                             <div class="btn-group">
                                 <a href="{!! route('libro.edit',$row->id) !!}" class="btn btn-link">
-                                    <i class="fas fa-edit    "></i>
+                                    <i class="fas fa-pen-alt    "></i>
                                 </a>
     
                                 {!! Form::open(['route' => ['libro.delete',$row->id],'method'=>'delete']) !!}

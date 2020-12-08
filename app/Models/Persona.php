@@ -25,4 +25,9 @@ class Persona extends Model
         "celular",
         "fecha_nacimiento",       
         ];
+                         //FullName => full_name
+    public function getFullNameAttribute()
+    {
+        return $this->nombres . '  ' . $this->apellidos;
+    }
 }
