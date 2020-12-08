@@ -5,6 +5,7 @@ use App\Models\Libro;
 use App\Models\Sexo;
 use App\Models\Categorias;
 use App\Models\Persona;
+use App\Models\Estado;
 
 
 use Illuminate\Http\Request;
@@ -41,6 +42,14 @@ class ApiAppsController extends Controller
     }
     public function personas (Request $request){
         $rows=Persona::all();
+        $data=[
+            'data'=>$rows
+        ];
+        return response()->json($data,200);
+    }
+
+    public function estados (Request $request){
+        $rows=Estado::all();
         $data=[
             'data'=>$rows
         ];

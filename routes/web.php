@@ -8,6 +8,7 @@ use App\Http\Controllers\ApiAppsController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\PrestamoController;
+use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\LibroController;
 
 
@@ -85,6 +86,7 @@ Route::middleware('auth')->group(function(){
         Route::get('sexos', [ApiAppsController::class, 'sexos']);
         Route::get('categorias', [ApiAppsController::class, 'categorias']);
         Route::get('personas', [ApiAppsController::class, 'personas']);
+        Route::get('estados', [ApiAppsController::class, 'estados']);
     });
 });
 
