@@ -10,6 +10,7 @@ use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\PrestamoController;
 use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\LibroController;
+use App\Http\Controllers\PersonasController;
 
 
 
@@ -41,6 +42,18 @@ Auth::routes(['register'=>false]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function(){
+
+    Route::prefix('app')->group(function(){
+        Route::prefix('personas')->group(function(){
+            Route::get('', [PersonasController::class, 'index'])->name('persona');
+            Route::get('add', [PersonasController::class, 'add'])->name('persona.add');
+            Route::get('edit/{model}', [PersonasController::class, 'edit'])->name('persona.edit');
+            Route::post('', [PersonasController::class, 'store'])->name('persona.store');
+            Route::patch('{model}', [PersonasController::class, 'update'])->name('persona.update');
+            Route::delete('{model}', [PersonasController::class, 'destroy'])->name('persona.delete');
+        });
+    });
+
 
     Route::prefix('')->group(function(){
         Route::prefix('categoria')->group(function () {
@@ -83,6 +96,7 @@ Route::middleware('auth')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::prefix('api-app')->group(function(){
         Route::get('libros', [ApiAppsController::class, 'libros']);
+        Route::get('barrios', [ApiAppsController::class, 'barrios']);
         Route::get('sexos', [ApiAppsController::class, 'sexos']);
         Route::get('categorias', [ApiAppsController::class, 'categorias']);
         Route::get('personas', [ApiAppsController::class, 'personas']);

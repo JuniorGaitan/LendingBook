@@ -23,7 +23,6 @@ class CategoriasController extends Controller
         $rows = Categorias::query()
             ->orderBy('id', 'desc')
             ->get();
-
         return view('catalogos.categorias.index', compact('rows'));
    
         //

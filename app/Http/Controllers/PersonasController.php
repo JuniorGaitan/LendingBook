@@ -15,21 +15,22 @@ class PersonasController extends Controller
         "apellidos" => ['required', 'string'],
         "identidad" => ['required', 'string'],
         "sexo_id" => ['required', 'numeric'],
-        "etnia_id" => ['required', 'numeric'],
         "barrio_id" => ['required', 'numeric'],
         "direccion" => ['required', 'string'],
         "telefono" => ['required', 'string'],
         "celular" => ['required', 'string'],
+        "fecha_nacimiento" => ['required', 'date'],
+
        
     ];
 
     public function index()
     {
-        $personas = Persona::all();
+        $personas = Persona::query()
+            ->orderBy('id', 'desc')
+            ->get();
         return view('app.personas.index', compact("personas"));
     }
-
-   
     public function add()
     {     $model=false; 
 
