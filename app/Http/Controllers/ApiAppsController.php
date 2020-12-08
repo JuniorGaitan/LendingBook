@@ -46,6 +46,7 @@ class ApiAppsController extends Controller
         ->when($request->buscar, function ($query) use ($request) {
             $buscar = "%" . $request->buscar . "%";
             $query->where('barrio', 'ilike', $buscar);
+            
         })
         ->get();
     $data = [
