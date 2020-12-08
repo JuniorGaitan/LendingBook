@@ -10,7 +10,7 @@
 
                     {!! Form::open(['route' => 'libro.store']) !!}
                     @include('catalogos.libros.fieldsLibros')
-                    {!! Form::submit('Guardar') !!}
+                    {!! Form::submit('Guardar',$attributes=['class' => 'form-control']) !!}
                     {!! Form::close() !!}
                 </p>
             </div>

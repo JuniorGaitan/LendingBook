@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-12">
 
         <div class="form-group">
             <label for="exampleInputEmail1">Nombre</label>
@@ -19,7 +19,7 @@
             @includeWhen(count($errors->get('autor'))>0, 'errors.message', ['errores' => $errors->get('autor')])
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Color</label>
+            <label for="exampleInputEmail1">Categoria</label>
             <select-combustibles 
             url="/api-app/categorias" 
             nombre="categoria_id" 

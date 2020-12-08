@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,7 +18,6 @@ class Persona extends Model
         "apellidos",
         "identidad",
         "sexo_id",
-        "etnia_id",
         "barrio_id",
         "direccion",
         "telefono",
@@ -30,4 +29,25 @@ class Persona extends Model
     {
         return $this->nombres . '  ' . $this->apellidos;
     }
+    public function getEdadAttribute()
+    {
+        return Carbon::parse($this->fecha_nacimiento)->age;
+    }
+    public function barrio()
+    {
+        return $this->hasOne(
+            Barrio::class,
+            'id',
+            'barrio_id'
+        );
+    }
+    public function sexo()
+    {
+        return $this->hasOne(
+            Sexo::class,
+            'id',
+            'sexo_id'
+        );
+    }
+
 }
