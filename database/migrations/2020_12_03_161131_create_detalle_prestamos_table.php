@@ -16,7 +16,7 @@ class CreateDetallePrestamosTable extends Migration
         Schema::create('detalle_prestamos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('libro_id')->constrained('libros');
-            $table->foreignId('prestamo_is')->constrained('prestamos');
+            $table->foreignId('prestamo_id')->constrained('prestamos');
             $table->integer('cantidad');
             
             $table->timestamps();

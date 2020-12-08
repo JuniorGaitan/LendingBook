@@ -5,6 +5,7 @@ use App\Models\Libro;
 use App\Models\Sexo;
 use App\Models\Categorias;
 use App\Models\Persona;
+use App\Models\Barrio;
 
 
 use Illuminate\Http\Request;
@@ -33,11 +34,24 @@ class ApiAppsController extends Controller
          return response()->json($data, 200);
      }
     public function sexos (Request $request){
-        $rows=Libro::all();
+        $rows=Sexo::all();
         $data=[
             'data'=>$rows
         ];
         return response()->json($data,200);
+    }
+    public function barrios (Request $request){
+       
+        $rows = Barrio::query()
+        ->when($request->buscar, function ($query) use ($request) {
+            $buscar = "%" . $request->buscar . "%";
+            $query->where('barrio', 'ilike', $buscar);
+        })
+        ->get();
+    $data = [
+        'data' => $rows
+    ];
+    return response()->json($data, 200);
     }
     public function personas (Request $request){
         $rows=Persona::all();
