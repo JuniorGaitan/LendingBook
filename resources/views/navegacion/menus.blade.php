@@ -8,7 +8,6 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
     <a class="dropdown-item" href="{!! route('libro') !!}">Libros</a>
-    <a class="dropdown-item" href="{!! route('persona') !!}">Personas</a>
     <a class="dropdown-item" href="{!! route('categoria') !!}">Categorias</a>
     </div>
   </li>
@@ -18,6 +17,8 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
       <a class="dropdown-item" href="{!! route('prestamo') !!}">Prestamos</a>
+    <a class="dropdown-item" href="{!! route('persona') !!}">Personas</a>
+
     </div>
   </li>
   @endguest

@@ -8,7 +8,6 @@
                 <h4 class="card-title">Datos de la persona</h4>
                 
                 <p class="card-text">
-                   
 
                     {!! Form::open(['route' => 'persona.store']) !!}
                     @include('app.personas.fieldsPersonas')
