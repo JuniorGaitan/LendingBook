@@ -14,9 +14,11 @@ class Prestamo extends Model
 
     //Definiendo los campos de la tabla
     protected $fillable = [
-    'responsable_libro_id',
+    'persona_id',
     'fecha_salida',
-    'fecha_entrega',
+    'fecha_entrada',
+    'estado_id'
+    ,
 ];
 
 public function persona()
@@ -24,7 +26,15 @@ public function persona()
     return $this->hasOne(
         Persona::class,
         'id',
-        'responsable_libro_id'
+        'persona_id'
+    );
+}
+public function estado()
+{
+    return $this->hasOne(
+        Estado::class,
+        'id',
+        'estado_id'
     );
 }
 

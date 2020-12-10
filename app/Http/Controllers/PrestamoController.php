@@ -41,11 +41,15 @@ class PrestamoController extends Controller
     public function store(Request $request)
     {
         //
-    }
+
+        //$campos=$this->validate($request,$this->rules);
+        $model=Prestamo::query()->create($request->all());
+        return redirect()->route('prestamo');
+    }   
 
     public function show(Prestamo $libros)
     {
-        //
+        
     }
 
     /**
@@ -56,7 +60,7 @@ class PrestamoController extends Controller
      */
     public function edit(Prestamo $libros)
     {
-        //
+        return view('app.personas.edit', compact('model'));
     }
 
     /**
@@ -66,9 +70,12 @@ class PrestamoController extends Controller
      * @param  \App\Models\Libros  $libros
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Prestamo $libros)
+    public function update(Request $request, Prestamo $model)
     {
-        //
+         $model->fill($request->all());
+        $model->save();
+
+        return redirect()->route('prestamo');
     }
 
     /**
@@ -77,8 +84,9 @@ class PrestamoController extends Controller
      * @param  \App\Models\Libros  $libros
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Prestamo $libros)
+    public function destroy(Prestamo $model)
     {
-        //
+        $model->delete();
+        return redirect()->route('prestamo');
     }
 }

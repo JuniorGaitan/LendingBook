@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DetallesPrestamos extends Model
+class Detalleprestamo extends Model
 {
     use HasFactory;
      //Definiendo la tabla del modelo

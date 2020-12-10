@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DetallePrestamos;
+use App\Models\Detalleprestamos;
 use Illuminate\Http\Request;
 
 class DetallePrestamosController extends Controller
@@ -12,22 +12,14 @@ class DetallePrestamosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(){
+        $rows = Detalleprestamos::query()
+            ->orderBy('id', 'desc')
+            ->get();
 
-    {
-
-    // //Definiendo la tabla del modelo
-    // protected $table = 'prestamos';
-
-    // //Definiendo los campos de la tabla
-    // protected $fillable = [
-    // 'responsable_libro_id',
-    // 'fecha_salida',
-    // 'fecha_entrega',
-    // 'estado_id',
-    // 'observaciones'];
-    //     //
+        return view('catalogos.detallesprestamos.index', compact('rows'));  
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +28,7 @@ class DetallePrestamosController extends Controller
      */
     public function create()
     {
-        //
+        return view('catalogos.detallesprestamos.add');
     }
 
     /**
@@ -47,7 +39,8 @@ class DetallePrestamosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $model=Detalleprestamos::query()->create($request->all());
+        return redirect()->route('detalleprestamo');
     }
 
     /**
@@ -58,7 +51,7 @@ class DetallePrestamosController extends Controller
      */
     public function show(DetallePrestamos $detallePrestamos)
     {
-        //
+        return view('catalogos.detallesprestamos.edit',compact('model'));
     }
 
     /**
@@ -69,7 +62,7 @@ class DetallePrestamosController extends Controller
      */
     public function edit(DetallePrestamos $detallePrestamos)
     {
-        //
+        return view('detalleprestamo.edit', compact('model'));
     }
 
     /**
@@ -79,9 +72,10 @@ class DetallePrestamosController extends Controller
      * @param  \App\Models\DetallePrestamos  $detallePrestamos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DetallePrestamos $detallePrestamos)
+    public function update(Request $request, DetallePrestamos $model)
     {
-        //
+        $model->fill($request->all());
+        $model->save();
     }
 
     /**
@@ -90,8 +84,9 @@ class DetallePrestamosController extends Controller
      * @param  \App\Models\DetallePrestamos  $detallePrestamos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DetallePrestamos $detallePrestamos)
+    public function destroy(DetallePrestamos $model)
     {
-        //
+        $model->delete();
+        return redirect()->route('detalleprestamo');
     }
 }

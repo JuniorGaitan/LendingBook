@@ -37,7 +37,7 @@ Route::post('/listas', function (Request $request) {
     return response()->json($request->all());
 })->name('listas')->middleware('auth');
 
-Auth::routes(['register'=>false]);
+Auth::routes(['register'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -82,10 +82,16 @@ Route::middleware('auth')->group(function(){
             Route::get('edit/{model}', [PrestamoController::class, 'show'])->name('prestamo.edit');
             Route::patch('{model}', [PrestamoController::class, 'update'])->name('prestamo.update');    
         });
+
+        Route::prefix('detalleprestamo')->group(function () {
+            Route::get('', [DetallePrestamosController::class, 'index'])->name('detalleprestamo');
+            Route::get('add', [DetallePrestamosController::class, 'add'])->name('detalleprestamo.add');
+            Route::post('', [DetallePrestamosController::class, 'store'])->name('detalleprestamo.store');
+            Route::delete('{model}', [DetallePrestamosController::class, 'destroy'])->name('detalleprestamo.delete');
+            Route::get('edit/{model}', [DetallePrestamosController::class, 'show'])->name('detalleprestamo.edit');
+            Route::patch('{model}', [DetallePrestamosController::class, 'update'])->name('detalleprestamo.update');    
+        });
  
-        
-   
-        
         Route::prefix('catalogos')->group(function () {
             Route::get('combustible', [CatalogosController::class, 'getCombustibles']);
         });
@@ -101,6 +107,7 @@ Route::middleware('auth')->group(function(){
         Route::get('categorias', [ApiAppsController::class, 'categorias']);
         Route::get('personas', [ApiAppsController::class, 'personas']);
         Route::get('estados', [ApiAppsController::class, 'estados']);
+        Route::get('prestamos', [ApiAppsController::class, 'prestamos']);
     });
 });
 
