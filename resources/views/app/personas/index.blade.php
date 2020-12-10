@@ -33,14 +33,17 @@
                                 <td>{{ $persona->sexo->sexo_full }} </td>
                                 <td>{{ $persona->edad }} </td>
                                 <td>
-                                    <a href="{!!  route('persona.edit', $persona->id) !!} ">
-                                        <i class="fas fa-pen-alt    "></i>
-                                    </a>
-                                    {!! Form::open(['route' => ['persona.delete',$row->id],'method'=>'delete']) !!}
-                                    <button type="submit" class="btn btn-link text-red">
-                                    <i class="fas fa-trash    "></i>
-                                    </button>
-                                    {!! Form::close() !!}
+                                    <div class="btn-group">
+                                        <a href="{!!  route('persona.edit', $persona->id) !!} ">
+                                            <i class="fas fa-pen-alt    "></i>
+                                        </a>
+                                        {!! Form::open(['route' => ['persona.delete',$persona->id],'method'=>'delete']) !!}
+                                        <button type="submit" class="btn btn-link text-red">
+                                        <i class="fas fa-trash    "></i>
+                                        </button>
+                                        {!! Form::close() !!}
+                                    </div>
+                                  
                                 </td>
                             </tr>
                         @endforeach

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\estados;
+use App\Models\Estado;
 use Illuminate\Http\Request;
 
 class EstadosController extends Controller
@@ -44,7 +44,7 @@ class EstadosController extends Controller
      * @param  \App\Models\estados  $estados
      * @return \Illuminate\Http\Response
      */
-    public function show(estados $estados)
+    public function show(Estado $estados)
     {
         //
     }
@@ -55,7 +55,7 @@ class EstadosController extends Controller
      * @param  \App\Models\estados  $estados
      * @return \Illuminate\Http\Response
      */
-    public function edit(estados $estados)
+    public function edit(Estado $estados)
     {
         //
     }
@@ -67,7 +67,7 @@ class EstadosController extends Controller
      * @param  \App\Models\estados  $estados
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, estados $estados)
+    public function update(Request $request, Estado $estados)
     {
         //
     }
@@ -78,7 +78,7 @@ class EstadosController extends Controller
      * @param  \App\Models\estados  $estados
      * @return \Illuminate\Http\Response
      */
-    public function destroy(estados $estados)
+    public function destroy(Estado $estados)
     {
         //
     }

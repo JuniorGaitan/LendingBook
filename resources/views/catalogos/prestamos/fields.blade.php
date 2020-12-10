@@ -4,14 +4,15 @@
         <label for="exampleInputEmail1">Responsable</label>
         <select-combustibles 
         url="/api-app/personas" 
-        nombre="responsable_libro_id" 
-        label="nombre" />
+        nombre="persona_id" 
+        label="nombres" />
     </div>
     <label for="exampleInputEmail1">Fecha de salida</label>
-    {!! Form::text('prestamo',null,$attributes=['class' => 'form-control']) !!}
+    {!! Form::date('fecha_salida',null,$attributes=['class' => 'form-control']) !!}    
     <small id="emailHelp" class="form-text text-muted">Fecha de salida del libro</small>
+
     <label for="exampleInputEmail1">Fecha de entrega</label>
-    {!! Form::text('prestamo',null,$attributes=['class' => 'form-control']) !!}
+    {!! Form::date('fecha_entrada',null,$attributes=['class' => 'form-control']) !!}
     <small id="emailHelp" class="form-text text-muted">Fecha de entrada del libro</small>
   
     <label for="exampleInputEmail1">Estados</label>
