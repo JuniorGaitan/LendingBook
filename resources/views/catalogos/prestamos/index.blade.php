@@ -33,6 +33,9 @@
                         <td>
 
                             <div class="btn-group">
+                                <a href="{!! route('prestamo.detalles',$row->id) !!}" class="btn btn-link">
+                                    <i class="far fa-eye"></i>
+                                </a>
                                 <a href="{!! route('prestamo.edit',$row->id) !!}" class="btn btn-link">
                                     <i class="fas fa-edit    "></i>
                                 </a>

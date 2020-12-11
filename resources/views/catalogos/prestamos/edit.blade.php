@@ -4,13 +4,10 @@
     <div class="col-lg-12">
         {!! Form::model($model, ['route' => ['prestamo.update', $model->id],'method'=>'patch'])
         !!}
-
         @include('catalogos.prestamos.fields')
-
         <button type="submit" class="btn btn-success">
             Actualizar
         </button>
-
         {!! Form::close() !!}
 
     </div>

@@ -18,7 +18,7 @@ class Prestamo extends Model
     'fecha_salida',
     'fecha_entrada',
     'estado_id'
-    ,
+    
 ];
 
 public function persona()

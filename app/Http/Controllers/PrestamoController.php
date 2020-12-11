@@ -7,26 +7,15 @@ use Illuminate\Http\Request;
 
 class PrestamoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
-        
             $rows = Prestamo::query()
                 ->orderBy('id', 'desc')
                 ->get();
     
             return view('catalogos.prestamos.index', compact('rows'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function add()
     {        //
         return view('catalogos.prestamos.add');
@@ -43,40 +32,34 @@ class PrestamoController extends Controller
         //
 
         //$campos=$this->validate($request,$this->rules);
-        $model=Prestamo::query()->create($request->all());
-        return redirect()->route('prestamo');
+        $rows=Prestamo::query()->create($request->all());
+       
+        return view('catalogos.detallesprestamos.detalles', compact('rows'));
+        //return redirect()->route('detalleprestamo.add',compact('model'));
     }   
 
-    public function show(Prestamo $libros)
+     
+    public function show(Prestamo $model)
     {
-        
+        return view('catalogos.prestamos.edit',compact('model'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Libros  $libros
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Prestamo $libros)
+
+    public function edit(Prestamo $model)
     {
-        return view('app.personas.edit', compact('model'));
+        return view('catalogos.prestamos.edit', compact('model'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Libros  $libros
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Prestamo $model)
+    
+    public function update(Prestamo $model,Request $request)
     {
-         $model->fill($request->all());
+        //$campos=$this->validate($request,$this->rules);
+        $model->fill($request->all());
         $model->save();
-
         return redirect()->route('prestamo');
     }
+   
+
 
     /**
      * Remove the specified resource from storage.

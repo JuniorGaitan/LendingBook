@@ -18,7 +18,7 @@ class CreatePrestamosTable extends Migration
             $table->foreignId('persona_id')->constrained('personas');
             $table->string('fecha_salida');
             $table->string('fecha_entrada');
-            $table->foreignId('estado_id')->constrained('estado');
+            $table->foreignId('estado_id')->constrained('estados');
 
             $table->timestamps();
         });

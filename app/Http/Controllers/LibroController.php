@@ -47,7 +47,6 @@ class LibroController extends Controller
         //$campos=$this->validate($request,$this->rules);
         $model->fill($request->all());
         $model->save();
-
         return redirect()->route('libro');
     }
 

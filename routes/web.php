@@ -11,6 +11,7 @@ use App\Http\Controllers\PrestamoController;
 use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\PersonasController;
+use App\Http\Controllers\DetallePrestamosController;
 
 
 
@@ -80,15 +81,20 @@ Route::middleware('auth')->group(function(){
             Route::post('', [PrestamoController::class, 'store'])->name('prestamo.store');
             Route::delete('{model}', [PrestamoController::class, 'destroy'])->name('prestamo.delete');
             Route::get('edit/{model}', [PrestamoController::class, 'show'])->name('prestamo.edit');
-            Route::patch('{model}', [PrestamoController::class, 'update'])->name('prestamo.update');    
+            Route::patch('{model}', [PrestamoController::class, 'update'])->name('prestamo.update');
+           
+
+
+            Route::patch('{model}', [PrestamoController::class, 'detalle'])->name('prestamo.detalles');    
         });
 
         Route::prefix('detalleprestamo')->group(function () {
             Route::get('', [DetallePrestamosController::class, 'index'])->name('detalleprestamo');
-            Route::get('add', [DetallePrestamosController::class, 'add'])->name('detalleprestamo.add');
+            Route::get('add/{model}', [DetallePrestamosController::class, 'add'])->name('detalleprestamo.add');
             Route::post('', [DetallePrestamosController::class, 'store'])->name('detalleprestamo.store');
             Route::delete('{model}', [DetallePrestamosController::class, 'destroy'])->name('detalleprestamo.delete');
-            Route::get('edit/{model}', [DetallePrestamosController::class, 'show'])->name('detalleprestamo.edit');
+            Route::get('edit/{model}', [DetallePrestamosController::class, 'edit'])->name('detalleprestamo.edit');
+            Route::get('edit/{model}', [DetallePrestamosController::class, 'show'])->name('detalleprestamo.show');
             Route::patch('{model}', [DetallePrestamosController::class, 'update'])->name('detalleprestamo.update');    
         });
  

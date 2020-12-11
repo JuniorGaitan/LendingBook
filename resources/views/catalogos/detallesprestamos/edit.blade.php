@@ -1,14 +1,13 @@
 @extends('layouts.app')
 @section('content')
 <div class="row">
-    <div class="col-lg-12">
-        {!! Form::model($model, ['route' => ['detalleprestamo.update', $model->id],'method'=>'patch'])
-        !!}
+
+    
+    <div class="card-body">
+        {!! Form::model($model, ['route' => ['detalleprestamo.update', $model->id],'method'=>'patch'])!!}
 
         @include('catalogos.detallesprestamos.fields')
-        <button type="submit" class="btn btn-success">
-            Actualizar
-        </button>
+        {!! Form::submit('Actualizar') !!}
         {!! Form::close() !!}
 
     </div>
